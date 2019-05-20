@@ -3,7 +3,9 @@
 //  WKWebView
 //
 //  Created by Marco Barnig on 17/11/2016.
-//  Copyright © 2016 Marco Barnig. All rights reserved.
+//  See LICENSE for details.
+//  Copyright © 2016 Marco Barnig.
+//  Copyright © 2019 Marcel Kummer (froglogic GmbH).
 //
 
 import Cocoa
