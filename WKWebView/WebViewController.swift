@@ -71,14 +71,13 @@ class WebViewController: NSViewController, WKUIDelegate, WKNavigationDelegate {
             outputText += "\nThe new navigationAction is : " + String(describing: navigationAction) + ".\n\n"
             outputText += "The new URL is : " + String(describing: newLink.url!) + ".\n"
             NotificationCenter.default.post(name: Notification.Name(rawValue: notifyKeyOutput), object: self)  
-            openSafari(link: newLink.url!)
+            openSafari(newLink.url!)
         }  // end if
         return nil
     } // end func
     
-    func openSafari(link: URL) {
-        let checkURL = link
-        if NSWorkspace.shared.open(checkURL as URL) {
+    func openSafari(_ url: URL) {
+        if NSWorkspace.shared.open(url) {
             outputText += "URL Successfully Opened in Safari.\n"
         } else {
             outputText += "Invalid URL in Safari.\n"
