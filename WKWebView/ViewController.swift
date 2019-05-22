@@ -9,17 +9,19 @@
 //
 
 import Cocoa
+import WebKit
 
 class ViewController: NSViewController {
     let webViewController = WebViewController()
-    
+    @IBOutlet weak var myWebView: WKWebView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-   }
 
-    override var representedObject: Any? {
-        didSet {
-        }
-    }
+        // let myURL = URL(string: "http://localhost:8042")
+        let myURL = URL(string: "https://froglogic.com")!
+
+        myWebView.load(URLRequest(url: myURL))
+   }
 }
 

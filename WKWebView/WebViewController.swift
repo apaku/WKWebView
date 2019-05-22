@@ -11,9 +11,7 @@
 import Cocoa
 import WebKit
 
-class WebViewController: NSViewController, WKUIDelegate, WKNavigationDelegate {
-    var myWebView: WKWebView!
-
+class WebViewController: NSObject, WKUIDelegate, WKNavigationDelegate {
     func webView(_ myWebView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("didStartProvisionalNavigation")
     }
@@ -44,28 +42,5 @@ class WebViewController: NSViewController, WKUIDelegate, WKNavigationDelegate {
     
     func openSafari(_ url: URL) {
         NSWorkspace.shared.open(url)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        let configuration = WKWebViewConfiguration()
-        myWebView = WKWebView(frame: .zero, configuration: configuration)
-        myWebView.translatesAutoresizingMaskIntoConstraints = false
-        myWebView.navigationDelegate = self
-        myWebView.uiDelegate = self
-        view.addSubview(myWebView)
-
-        [myWebView.topAnchor.constraint(equalTo: view.topAnchor),
-         myWebView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-         myWebView.leftAnchor.constraint(equalTo: view.leftAnchor),
-         myWebView.rightAnchor.constraint(equalTo: view.rightAnchor)].forEach  { 
-            anchor in
-            anchor.isActive = true
-        }
-        
-        // let myURL = URL(string: "http://localhost:8042")
-        let myURL = URL(string: "https://froglogic.com")
-        myWebView.load(URLRequest(url: myURL!))
     }
 }
